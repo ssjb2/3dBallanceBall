@@ -10,6 +10,7 @@ Jest to open-sourcowy projekt, który pozwala grom i symulacjom służyć jako �
   w bogatych środowiskach Unity, a następnie udostępniać szerszej społeczności badaczy i twórców gier.
  
 2.Jakie modele są  wykorzystane w ML-Agents?
+
   ML-Agents posiada modele takie jak wsparcie szkolenia scenariuszy z jednym agentem, z wieloma współpracownikami i rywalizacją z wieloma agentami za pomocą kilku algorytmów Deep Reinforcement Learning (PPO, SAC, MA-POCA, samodzielna gra).  Wsparcie uczenia się z demonstracji poprzez dwa algorytmy Imitation Learning (BC i GAIL).
 Łatwo definiowalne scenariusze Curriculum Learning dla złożonych zadań
 
@@ -94,7 +95,9 @@ uniemożliwiał agentowi zrobienie czegokolwiek, aby utrzymać piłkę.
 ![image](https://user-images.githubusercontent.com/36816150/121016648-ad39bd00-c79c-11eb-9365-f9dcc88068e2.png)
 
 9.Instalacja
+
   -Zainstalowanie pakietu ML-Agents https://github.com/Unity-Technologies/ml-agents/blob/release_17_docs/docs/Installation.md
+
   -Podmiana plików z gita w ML-Agents/Examples/3DBall
 
 
