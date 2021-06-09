@@ -15,8 +15,27 @@ Jest to open-sourcowy projekt, który pozwala grom i symulacjom służyć jako �
 Łatwo definiowalne scenariusze Curriculum Learning dla złożonych zadań
 
 Wszyscy agenci zostali wytrenowani przeze mnie za pomocą modelu PPO (Proximal Policy Optimization). Algorytm PPO został wprowadzony przez zespół OpenAI w 2017 roku i szybko stał się jedną z najpopularniejszych metod RL uzurpujących sobie metodę uczenia Deep-Q. Polega on na zebraniu niewielkiej partii doświadczeń wchodzących w interakcję ze środowiskiem i wykorzystaniu tej partii do aktualizacji polityki podejmowania decyzji. Po zaktualizowaniu zasad przy użyciu tej partii, są one odrzucane, a nowsza partia jest zbierana z nowo zaktualizowanymi zasadami. To jest powód, dla którego jest to podejście oparte na „on-policy”, w którym zebrane próbki doświadczeń są przydatne tylko do jednorazowej aktualizacji obecnej polityki.
+PPO to optymalizacja pierwszego rzędu, która upraszcza jej implementację. Podobnie jak funkcja celu TRPO, określa stosunek prawdopodobieństwa między nową polityką a starą polityką.
 
-Parametry i hiperparametry dla PPO
+Trust region PPO
+
+ W PPO ogranicza się o jak bardzo można zmienić politykę w każdej iteracji poprzez dywergencja KL. Rozbieżność KL mierzy różnicę między dwoma rozkładami danych p i q.
+
+![image](https://user-images.githubusercontent.com/36816150/121361302-73e88500-c935-11eb-8194-ce98194096d1.png)
+
+Następnie adaptujemy go, aby zmierzyć różnicę między tymi dwiema politykami. Nie chcemy, aby jakakolwiek nowa polityka zbytnio różniła się od obecnej.
+
+![image](https://user-images.githubusercontent.com/36816150/121361384-86fb5500-c935-11eb-87b4-99a9d917d4eb.png)
+
+Znajdujemy funckję dolnego ograniczenia M jako:
+
+![image](https://user-images.githubusercontent.com/36816150/121361980-09841480-c936-11eb-9c25-84089de132dd.png)
+
+![image](https://user-images.githubusercontent.com/36816150/121362634-857e5c80-c936-11eb-9f70-e5bae2eba9c8.png)
+
+L to oczekiwana funkcja przewagi (oczekiwane nagrody minus linia bazowa, taka jak V(s)) dla nowej polisy. Jest szacowany przez starą (lub obecną) politykę, a następnie ponownie kalibrowany przy użyciu ilorazu prawdopodobieństwa między nową i starą polityką. Używamy funkcji przewagi zamiast oczekiwanej nagrody, ponieważ zmniejsza ona wariancję oszacowania. Dopóki poziom odniesienia nie zależy od parametrów naszej polityki, optymalna polityka będzie taka sama.
+
+Parametry i hiperparametry PPO trenera
 
 ![image](https://user-images.githubusercontent.com/36816150/121350900-7ba32c00-c92b-11eb-9300-c5ac4881d2c7.png)
 
