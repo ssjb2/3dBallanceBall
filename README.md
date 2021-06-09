@@ -17,6 +17,12 @@ Jest to open-sourcowy projekt, który pozwala grom i symulacjom służyć jako �
 Wszyscy agenci zostali wytrenowani przeze mnie za pomocą modelu PPO (Proximal Policy Optimization). Algorytm PPO został wprowadzony przez zespół OpenAI w 2017 roku i szybko stał się jedną z najpopularniejszych metod RL uzurpujących sobie metodę uczenia Deep-Q. Polega on na zebraniu niewielkiej partii doświadczeń wchodzących w interakcję ze środowiskiem i wykorzystaniu tej partii do aktualizacji polityki podejmowania decyzji. Po zaktualizowaniu zasad przy użyciu tej partii, są one odrzucane, a nowsza partia jest zbierana z nowo zaktualizowanymi zasadami. To jest powód, dla którego jest to podejście oparte na „on-policy”, w którym zebrane próbki doświadczeń są przydatne tylko do jednorazowej aktualizacji obecnej polityki.
 PPO to optymalizacja pierwszego rzędu, która upraszcza jej implementację. Podobnie jak funkcja celu TRPO, określa stosunek prawdopodobieństwa między nową polityką a starą polityką.
 
+Algorytm PPO 
+
+![image](https://user-images.githubusercontent.com/36816150/121363267-15240b00-c937-11eb-8f29-47374d45e84e.png)
+
+
+
 Trust region PPO
 
  W PPO ogranicza się o jak bardzo można zmienić politykę w każdej iteracji poprzez dywergencja KL. Rozbieżność KL mierzy różnicę między dwoma rozkładami danych p i q.
